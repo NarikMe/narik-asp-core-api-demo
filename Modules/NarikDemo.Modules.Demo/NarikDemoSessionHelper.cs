@@ -8,6 +8,6 @@ namespace NarikDemo.Modules.Demo
     {
         private static ISessionStorage _sessionStorage;
         public static ISessionStorage SessionStorage => _sessionStorage ?? (_sessionStorage = ServiceLocator.Current.GetInstance<ISessionStorage>());
-        public static NarikDemonUser User => SessionStorage["User"] as NarikDemonUser;
+        public static NarikDemoUser User => SessionStorage["User"] as NarikDemoUser;
     }
 }

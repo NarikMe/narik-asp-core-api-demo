@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Narik.Common.Data.DomainService;
 using Narik.Common.Shared.Models;
@@ -32,5 +33,14 @@ namespace NarikDemo.Modules.Demo._UserAccount
            
         }
 
+        protected  override async Task<string> ValidateBeforeSubmitPostAsync(UserAccountViewModel entity, PostData<UserAccountViewModel> postData, bool isNew)
+        {
+            var existUserId =await DomainService.ExistsUserName(entity.UserName,entity.Id);
+            if (existUserId)
+                return "errors.DUPLICATE_USER_NAME";
+            if (entity.UserName?.ToLower()=="admin")
+                return "errors.ADMIN_IS_NOT_EDITABLE";
+            return await base.ValidateBeforeSubmitPostAsync(entity, postData, isNew);
+        }
     }
 }

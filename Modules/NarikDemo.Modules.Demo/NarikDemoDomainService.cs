@@ -40,12 +40,20 @@ namespace NarikDemo.Modules.Demo
 
         public async Task<bool> UpdateUserRoles(int userId, int[] roles)
         {
-            return await DataService.UpdateUserRoles(userId, roles);
+            if (userId != 4)
+                return await DataService.UpdateUserRoles(userId, roles);
+            return false;
         }
 
         public async Task<int> GetUserRole(int userId)
         {
             return await DataService.GetUserRole(userId);
+        }
+
+        public async Task<bool> ExistsUserName(string userName, int id)
+        {
+            return await DataService.DbContext.UserAccounts
+                .AnyAsync(x => x.UserName == userName && x.Id != id);
         }
     }
 }

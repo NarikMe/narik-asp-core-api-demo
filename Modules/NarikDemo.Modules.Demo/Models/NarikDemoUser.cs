@@ -1,9 +1,7 @@
 ﻿namespace NarikDemo.Modules.Demo.Models
 {
-    public class NarikDemonUser
+    public class NarikDemoUser
     {
-        public int? StaffId { get; set; }
-        public int? TeamId { get; set; }
 
         public string UserName { get; set; }
 

@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNet.OData.Builder;
+﻿using System;
+using Microsoft.AspNet.OData.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SignalR;
 using Narik.Common.Infrastructure.Interfaces;
 using Narik.Common.Services.Core;
 using Narik.Common.Web.Infrastructure.OData;
 using NarikDemo.Data;
+using NarikDemo.Modules.Demo.Models;
 using NarikDemo.Modules.Demo.Services;
 using Unity;
 using Unity.Lifetime;
@@ -27,6 +30,21 @@ namespace NarikDemo.Modules.Demo
         {
             _unityContainer.RegisterType<IAccountService, AccountService>(
                 new ContainerControlledLifetimeManager());
+
+            _unityContainer.Resolve<ISessionStorage>()
+                .AddCallBack("User", x =>
+                {
+                    var ibnDomainService = _unityContainer.Resolve<NarikDemoDomainService>();
+                    var httpContextAccessor = _unityContainer.Resolve<IHttpContextAccessor>();
+                    var userId = httpContextAccessor.HttpContext.User.FindFirst("UserId").Value;
+                    var userInfo = ibnDomainService.GetUserByUserId(Convert.ToInt32(userId));
+                    return new NarikDemoUser
+                    {
+                        UserId = userInfo.Id,
+                        Title = userInfo.Title,
+                        UserName = userInfo.UserName
+                    };
+                });
         }
 
         public void RegisterOdataController(ODataModelBuilder builder)
