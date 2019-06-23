@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
@@ -54,6 +55,18 @@ namespace NarikDemo.Modules.Demo
         {
             return await DataService.DbContext.UserAccounts
                 .AnyAsync(x => x.UserName == userName && x.Id != id);
+        }
+
+        public async  Task<bool> IsAdminId(List<int> ids)
+        {
+            return await DataService.DbContext.UserAccounts
+                .AnyAsync(x => x.UserName == "admin" && ids.Contains(x.Id));
+        }
+
+        public async Task<bool> IsAdminRoleId(List<int> ids)
+        {
+            return await DataService.DbContext.Set<Role>()
+                .AnyAsync(x => x.Title == "admin" && ids.Contains(x.Id));
         }
     }
 }

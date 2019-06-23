@@ -42,5 +42,16 @@ namespace NarikDemo.Modules.Demo._UserAccount
                 return "errors.ADMIN_IS_NOT_EDITABLE";
             return await base.ValidateBeforeSubmitPostAsync(entity, postData, isNew);
         }
+
+        
+
+        protected override async Task<string> DoBeforeDeleteAsync(List<ChangeSetEntry> changes)
+        {
+            var ids = changes.Select(x => x.Entity).OfType<UserAccountViewModel>().Select(x=>x.Id).ToList();
+            var isAdminId =await  DomainService.IsAdminId(ids);
+            if (isAdminId)
+                return  "errors.ADMIN_IS_NOT_EDITABLE";
+            return null;
+        }
     }
 }
