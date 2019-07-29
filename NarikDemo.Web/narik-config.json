@@ -14,6 +14,6 @@
     "addDefaultAuthorizeFilter": true,
     "connectionStringKey": "DbContextDB",
     "apiPrefixes": "api,odata",
-    "appDirectories": "narik-devextreme-demo,narik-material-demo"
+    "appDirectories": "demo/dashboard,demo/app"
   }
 }
