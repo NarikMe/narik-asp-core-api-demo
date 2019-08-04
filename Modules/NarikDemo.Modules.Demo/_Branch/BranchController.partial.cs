@@ -5,7 +5,7 @@ using NarikDemo.Data.Model;
 
 namespace NarikDemo.Modules.Demo._Branch
 {
-    [AllowAnonymous] //TODO: just add to testing clients whit out need to authentication
+    [AllowAnonymous] //TODO: just add to testing clients without need to authentication
     public partial class BranchController
     {
         public IQueryable<NarikDto> GetForSelector()
