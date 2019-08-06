@@ -3,7 +3,7 @@
     "modules": [
       {
         "key": "NarikDemo",
-        "assemeblyName": "NarikDemo.Modules.Demo.dll",
+        "assemblyName": "NarikDemo.Modules.Demo.dll",
         "initOrder": "1"
       }
     ],
@@ -11,7 +11,7 @@
     "useCamelCase": true,
     "authenticationMode": "Jwt",
     "odataMaxTop": "1000",
-    "addDefaultAuthorizeFilter": true,
+    "addDefaultAuthenticationPolicy": true,
     "connectionStringKey": "DbContextDB",
     "apiPrefixes": "api,odata",
     "appDirectories": "demo/dashboard,demo/app"
