@@ -34,7 +34,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.2" />
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="2.2.0" />
-    <PackageReference Include="Narik.Common.Web.Infrastructure" Version="1.0.14" />
+    <PackageReference Include="Narik.Common.Web.Infrastructure" Version="1.0.15" />
     <PackageReference Include="Narik.Modules.Runtime" Version="1.0.12" />
     <PackageReference Include="Narik.Unity.Microsoft.DependencyInjection" Version="2.1.1" />
     <PackageReference Include="NLog" Version="4.5.11" />
