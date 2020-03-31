@@ -24,7 +24,7 @@ namespace NarikDemo.Data.Model.Mapping
             builder.HasKey(x => x.TxnId);
 
             
-            builder.Property(x => x.TxnId).HasColumnName("TXN_ID").HasColumnType("numeric").IsRequired().UseSqlServerIdentityColumn();
+            builder.Property(x => x.TxnId).HasColumnName("TXN_ID").HasColumnType("numeric").IsRequired().UseIdentityColumn();
             
             builder.Property(x => x.Amount).HasColumnName("AMOUNT").HasColumnType("float").IsRequired();
             

@@ -36,7 +36,7 @@ namespace NarikDemo.Modules.Demo
         public async Task<ApplicationUser> GetApplicationUserByUserName(string userName)
         {
             return await DataService.DbContext.UserAccounts.Where(x => x.UserName == userName)
-                .ProjectTo<ApplicationUser>().FirstOrDefaultAsync();
+                .ProjectTo<ApplicationUser>(this.MapperConfiguration).FirstOrDefaultAsync();
         }
 
         public async Task<bool> UpdateUserRoles(int userId, int[] roles)

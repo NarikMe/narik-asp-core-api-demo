@@ -1,10 +1,11 @@
 ﻿using System.Net.Http;
-using System.Net.Http.Formatting;
 using NarikDemo.Test.Base;
 using NarikDemo.Web;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Narik.Common.Shared.Models;
 using Xunit;
+using System.Text;
+using System.Text.Json;
 
 namespace NarikDemo.Test
 {
@@ -20,15 +21,21 @@ namespace NarikDemo.Test
             var url = "api/account/Authenticate";
             var client = Factory.CreateClient();
 
-            var response = await client.PostAsync(url,
-                new LoginModel
+            var obj = new LoginModel
             {
                 UserName = "admin",
                 Password = "123"
-            }, new JsonMediaTypeFormatter());
+            };
+            var stringPayload = System.Text.Json.JsonSerializer.Serialize(obj);
+            var response = await client.PostAsync(url, new StringContent(stringPayload, Encoding.UTF8, "application/json"));
+
 
             response.EnsureSuccessStatusCode(); // Status Code 200-299
-            var result = await response.Content.ReadAsAsync<LoginResultModel>();
+            var result = await response.Content.ReadAsStringAsync();
+            var resultObject = System.Text.Json.JsonSerializer.Deserialize<LoginResultModel>(result, new JsonSerializerOptions()
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            }) ;
             System.Diagnostics.Debug.WriteLine(response.StatusCode);
 
         }
@@ -39,15 +46,22 @@ namespace NarikDemo.Test
             var url = "api/UserAction/UpdateRoles";
             var client = Factory.CreateClient();
 
-            var response = await client.PostAsync(url,
-                new ValueHolder<int,int[]>()
-                {
-                    Value = 2,
-                    Value1 =new []{2}
-                }, new JsonMediaTypeFormatter());
+
+
+            var stringPayload = System.Text.Json.JsonSerializer.Serialize(new ValueHolder<int, int[]>()
+            {
+                Value = 2,
+                Value1 = new[] { 2 }
+            });
+            var response = await client.PostAsync(url, new StringContent(stringPayload, Encoding.UTF8, "application/json"));
+
 
             response.EnsureSuccessStatusCode(); // Status Code 200-299
-            var result = await response.Content.ReadAsAsync<LoginResultModel>();
+            var result = await response.Content.ReadAsStringAsync();
+            var resultObject = System.Text.Json.JsonSerializer.Deserialize<LoginResultModel>(result, new JsonSerializerOptions()
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            });
             System.Diagnostics.Debug.WriteLine(response.StatusCode);
 
         }

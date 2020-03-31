@@ -24,7 +24,7 @@ namespace NarikDemo.Data.Model.Mapping
             builder.HasKey(x => x.CustId);
 
             
-            builder.Property(x => x.CustId).HasColumnName("CUST_ID").HasColumnType("int").IsRequired().UseSqlServerIdentityColumn();
+            builder.Property(x => x.CustId).HasColumnName("CUST_ID").HasColumnType("int").IsRequired().UseIdentityColumn();
             
             builder.Property(x => x.Address).HasColumnName("ADDRESS").HasColumnType("varchar").HasMaxLength(30);
             

@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.SignalR;
-using Narik.Common.Infrastructure.Interfaces;
 using Narik.Common.Services.Core;
+using Narik.Common.Web.Infrastructure.Interfaces;
 using Narik.Common.Web.Infrastructure.OData;
 using NarikDemo.Data;
 using NarikDemo.Modules.Demo.Models;
@@ -52,9 +53,9 @@ namespace NarikDemo.Modules.Demo
             ODataHelper.RegisterControllers(builder, GetType().Assembly);
         }
 
-        public void RegisterSignalRHubs(HubRouteBuilder routes)
+       
+        public void RegisterSignalRHubs(IEndpointRouteBuilder configure)
         {
-
         }
     }
 }

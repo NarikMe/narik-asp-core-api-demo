@@ -24,7 +24,7 @@ namespace NarikDemo.Data.Model.Mapping
             builder.HasKey(x => x.OfficerId);
 
             
-            builder.Property(x => x.OfficerId).HasColumnName("OFFICER_ID").HasColumnType("int").IsRequired().UseSqlServerIdentityColumn();
+            builder.Property(x => x.OfficerId).HasColumnName("OFFICER_ID").HasColumnType("int").IsRequired().UseIdentityColumn();
             
             builder.Property(x => x.EndDate).HasColumnName("END_DATE").HasColumnType("datetime");
             
