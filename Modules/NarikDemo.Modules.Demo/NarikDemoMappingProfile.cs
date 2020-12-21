@@ -113,6 +113,10 @@ namespace NarikDemo.Modules.Demo
 
             CreateMap<Role, RoleViewModel>();
             CreateMap<RoleViewModel, Role>();
+
+            CreateMap<Role, NarikDto>()
+                .ForMember(x => x.Id, x => x.MapFrom(s => s.Id))
+                .ForMember(x => x.Title, x => x.MapFrom(s => s.Title));
         }
     }
 }
