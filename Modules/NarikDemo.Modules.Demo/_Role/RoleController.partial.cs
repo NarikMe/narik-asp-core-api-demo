@@ -14,7 +14,7 @@ namespace NarikDemo.Modules.Demo._Role
         //[NarikOverrideAuthorize(new[] { Roles.SysAdmin,Roles.Admin,Roles.Staff })]
         public IQueryable<NarikDto> GetForSelector()
         {
-            return DomainService.GetEntityList<Role, NarikDto>();
+            return DomainService.GetEntityList<Role, NarikDto>(r => r.IsActive);
         }
 
 
