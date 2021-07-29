@@ -1,8 +1,8 @@
 ﻿using System;
-using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.OData.ModelBuilder;
 using Narik.Common.Services.Core;
 using Narik.Common.Web.Infrastructure.Interfaces;
 using Narik.Common.Web.Infrastructure.OData;

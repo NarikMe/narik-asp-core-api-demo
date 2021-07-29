@@ -8,13 +8,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <PreserveCompilationContext>false</PreserveCompilationContext>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Narik.Common.Web.Infrastructure" Version="3.0.0" />
-    <PackageReference Include="Narik.Modules.Runtime" Version="3.0.0" />
+    <PackageReference Include="Narik.Common.Web.Infrastructure" Version="5.0.0" />
+    <PackageReference Include="Narik.Modules.Runtime" Version="5.0.0" />
     <PackageReference Include="Narik.Unity.Microsoft.DependencyInjection" Version="5.11.5" />
   </ItemGroup>
 

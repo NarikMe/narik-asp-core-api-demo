@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>NarikDemo.Modules.Demo</RootNamespace>
     <AssemblyName>NarikDemo.Modules.Demo</AssemblyName>
   </PropertyGroup>
@@ -22,7 +22,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Narik.Common.Web.Infrastructure" Version="3.0.0" />
+    <PackageReference Include="Narik.Common.Web.Infrastructure" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>

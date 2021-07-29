@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.OData.Query;
 using NarikDemo.Data.Model;
 
 namespace NarikDemo.Modules.Demo._Customer
